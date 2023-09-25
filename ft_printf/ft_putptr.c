@@ -1,44 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miturk <miturk@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/19 15:28:15 by miturk            #+#    #+#             */
-/*   Updated: 2023/09/21 15:34:48 by miturk           ###   ########.fr       */
+/*   Created: 2023/09/25 08:55:08 by miturk            #+#    #+#             */
+/*   Updated: 2023/09/25 14:49:14 by miturk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_puts(char *s)
+long int	ft_putptr(void *ptr)
 {
-	int	len;
+	int				len;
+	unsigned long int	address;
+	//unsigned long int	hex;
 
-	len = 0;
-	if (!*s)
-	{
-		write (1, "(null)", 6);
-		len = 6;
-	}
-	else
-	{
-		while (*s != '\0')
-		{
-			len = len + ft_putchar_p(*s);
-			s++;
-		}
-	}
+	len = write(1, "0x", 2);
+	address = (unsigned long int)ptr;
+	ft_puthex(address / 16, 'x');
+    len = len + ft_putchar_p("0123456789abcdef"[address % 16]);
 	return (len);
 }
+
 /*
 int	main(void)
 {
-	char	s[] = "Hello World!";
+	void *ptr = "13245";
 
-	printf ("%s", s);
-
+	printf("Original: %p\n", ptr);
+	ft_printf("Mine: %p\n", ptr);
 	return (0);
-}
-*/
+}*/
