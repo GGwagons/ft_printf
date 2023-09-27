@@ -10,35 +10,39 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= ft_printf.a
+NAME		= libftprintf.a
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
 AR			= ar rcs
 RM			= rm -f
+SRC_FILES	=   ft_printf \
+				ft_putchar_p \
+				ft_putdi \
+				ft_puthex \
+				ft_putptr \
+				ft_puts \
+				ft_putu 
 
-SRC_FILES = ft_printf.c \
-			ft_putu.c \
-			ft_puts.c \
-			ft_putdi.c \
-			ft_putchar_p.c \
-			ft_puthex.c 
+SRCS_DIR	=	./
+SRCS		=	$(addprefix $(SRCS_DIR), $(addsuffix .c, $(SRC_FILES)))
 
-OBJS = $(SRC_FILES:.c=.o)
-
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(NAME) $(OBJS)
-
-.c.o:
-	$(CC) $(CFLAGS) -c $< -o $@
+OBJS_DIR	=	./
+OBJS		=	$(addprefix $(OBJS_DIR), $(addsuffix .o, $(SRC_FILES)))
 
 all: $(NAME)
 
+.c.o: $(SRCS)
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+$(NAME): $(OBJS)
+		@$(AR) $(NAME) $(OBJS)
+
 clean:
-	$(RM) $(OBJS)
+		$(RM) $(OBJS)
 
 fclean: clean
 	$(RM) $(NAME)
 
 re: clean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re 
