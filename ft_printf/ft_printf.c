@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: miturk <miturk@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/19 10:39:28 by miturk            #+#    #+#             */
-/*   Updated: 2023/09/23 17:06:11 by codespace        ###   ########.fr       */
+/*   Created: 2023/09/25 08:43:16 by miturk            #+#    #+#             */
+/*   Updated: 2023/09/25 13:50:56 by miturk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	ft_format(va_list args, char format)
 	return (len);
 }
 
-int	ft_printf(const	char *string, ...)
+int	ft_printf(const char *string, ...)
 {
 	va_list	args;
 	int		i;
@@ -56,37 +56,6 @@ int	ft_printf(const	char *string, ...)
 			len = len + ft_putchar_p(string[i]);
 		i++;
 	}
-	va_end (args);
+	va_end(args);
 	return (len);
 }
-/*
-int	main(void)
-{
-	//char	c = 'H';
-	char	s[] = "Miha Turk";
-	//int	i = 12345;
-	//unsigned int y = 46524545; 
-
-	// ft_printf("Mine:%s and: %c and: %i\n", s, c, i);
-	// printf("Mine:%s and: %c and: %i\n", s, c, c);
-	// printf("Original: %c\n", c);
-	// ft_printf("Mine: %s\n", s);
-	// printf("Original: %s\n", s);
-	// ft_printf("Mine: %d\n", i);
-	// printf("Original: %d\n", i);
-	// ft_printf("Mine: %i\n", i);
-	// printf("Original: %i\n", i);
-	// ft_printf("Mine: %%\n", i);
-	// printf("Original: %%\n");
-	// ft_printf("Mine: %u\n", i);
-	// printf("Original: %u\n", i);
-	// ft_printf("Mine: %x\n", y);
-	// printf("Original: %x\n", y);
-	// ft_printf("Mine: %X\n", y);
-	// printf("Original: %X\n", y);
-	// ft_printf("Mine: %p\n", s);
-	 ft_printf("Mine %p\n", s);
-	// printf("Original %p\n", s);
-	 printf("Original: %p\n", s);
-	return (0);
-}*/
