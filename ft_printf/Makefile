@@ -31,7 +31,7 @@ OBJS		=	$(addprefix $(OBJS_DIR), $(addsuffix .o, $(SRC_FILES)))
 
 all: $(NAME)
 
-.c.o: $(SRCS)
+$(OBJS_DIR)%.o: $(SRCS_DIR)%c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 $(NAME): $(OBJS)
@@ -45,4 +45,5 @@ fclean: clean
 
 re: clean all
 
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re
+

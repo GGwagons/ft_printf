@@ -6,11 +6,23 @@
 /*   By: miturk <miturk@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 08:43:16 by miturk            #+#    #+#             */
-/*   Updated: 2023/09/25 13:50:56 by miturk           ###   ########.fr       */
+/*   Updated: 2023/09/28 16:05:44 by miturk           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static int	ft_strchr(const char *s, int c)
+{
+	while (*s != '\0')
+	{
+		if (*s++ == (char)c)
+			return (1);
+	}
+	if ((char)c == '\0')
+		return (0);
+	return (0);
+}
 
 static int	ft_format(va_list args, char format)
 {
@@ -42,19 +54,22 @@ int	ft_printf(const char *string, ...)
 	int		i;
 	int		len;
 
-	i = 0;
+	if (string == 0)
+		return (-1);
+	i = -1;
 	len = 0;
 	va_start(args, string);
-	while (string[i])
+	while (string[++i])
 	{
-		if (string[i] == '%')
+		if (string[i] == '%' && string[i + 1] == '\0' && i == 0)
+			return (-1);
+		if (string[i] == '%' && 1 == ft_strchr("cspdiuxX%", string[i + 1]))
 		{
 			len = len + ft_format(args, string[i + 1]);
 			i++;
 		}
 		else
 			len = len + ft_putchar_p(string[i]);
-		i++;
 	}
 	va_end(args);
 	return (len);

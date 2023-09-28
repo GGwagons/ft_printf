@@ -32,3 +32,4 @@ int	ft_puts(char *s)
 	}
 	return (len);
 }
+

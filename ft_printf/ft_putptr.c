@@ -30,3 +30,4 @@ long int	ft_putptr(void *ptr)
 		len = len + ft_putchar_p("0123456789abcdef"[address % 16]);
 	return (len);
 }
+

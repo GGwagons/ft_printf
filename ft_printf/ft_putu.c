@@ -19,12 +19,12 @@ int	ft_putu(unsigned int nbr)
 	len = 0;
 	if (nbr >= 10)
 	{
-		len = len + ft_putu(nbr / 10);
-		len = len + ft_putu(nbr % 10);
+		len = len + ft_putu (nbr / 10);
+		len = len + ft_putu (nbr % 10);
 	}
 	else
 	{
-		ft_putchar_p(nbr + '0');
+		ft_putchar_p (nbr + '0');
 		len++;
 	}
 	return (len);
